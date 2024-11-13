@@ -1,0 +1,30 @@
+aid: bubbles
+name: Bubbles
+description: >-
+  Bubbles API features allow you to set up incoming and outgoing requests to
+  communicate with other applications and services 
+type: Index
+position: Consumer
+access: 3rd-Party
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+tags:
+  - API
+created: '2024-11-13'
+modified: '2024-11-13'
+url: https://raw.githubusercontent.com/api-search/bubbles/refs/heads/main/apis.yml
+specificationVersion: '0.19'
+apis:
+  - aid: bubbles:bubbles
+    name: Bubbles
+    description: >-
+      Bubbles API features allow you to set up incoming and outgoing requests to
+      communicate with other applications and services 
+    humanURL: ' https://manual.bubble.io/core-resources/api'
+    tags:
+      - API
+    properties:
+      - type: Documentation
+        url: ' https://manual.bubble.io/core-resources/api'
+maintainers:
+  - FN: Kin Lane
+    email: info@apievangelist.com
