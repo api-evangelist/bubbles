@@ -1,11 +1,9 @@
 aid: bubbles
-url: 
-  https://raw.githubusercontent.com/api-search/bubbles/refs/heads/main/apis.yml
+url: https://raw.githubusercontent.com/api-search/bubbles/refs/heads/main/apis.yml
 apis:
   - aid: bubbles:bubbles
     name: Bubbles
-    tags:
-      - API
+    tags: []
     humanURL: ' https://manual.bubble.io/core-resources/api'
     properties:
       - url: ' https://manual.bubble.io/core-resources/api'
