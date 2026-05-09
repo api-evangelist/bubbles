@@ -3,11 +3,11 @@
   "feeds": [
     {
       "source": "https://bubble.io/blog",
-      "feed_url": "https://bubble.io/blog/rss/",
-      "saved": 10,
-      "title": "Bubble Blog | What you need to know about building with no-code"
+      "feed_url": "https://bubble.io/blog/feed/",
+      "title": "Bubble Blog | What you need to know about building with no-code",
+      "saved": 9
     }
   ],
-  "post_count": 10,
-  "fetched": "2026-05-03T23:24:32Z"
+  "post_count": 19,
+  "fetched": "2026-05-09T20:17:51Z"
 }
