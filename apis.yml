@@ -81,6 +81,10 @@ common:
   - type: Blog
     url: https://bubble.io/blog
 
+  - type: Integrations
+    url: https://bubble.io/plugins
+integrations:
+  - name: Bubble
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
