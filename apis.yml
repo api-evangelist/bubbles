@@ -58,6 +58,8 @@ apis:
         url: https://manual.bubble.io/core-resources/api/the-bubble-api/the-workflow-api
 
 common:
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/bubble-hq
   - type: Website
     url: https://bubble.io
   - type: Portal
