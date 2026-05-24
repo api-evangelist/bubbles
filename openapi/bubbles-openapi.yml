@@ -1,0 +1,233 @@
+openapi: 3.1.0
+info:
+  title: Bubble Data API
+  description: |
+    The Bubble Data API exposes the database of a Bubble application as REST resources.
+    Each application data type is addressable under `/api/1.1/obj/{typename}` for collection
+    operations and `/api/1.1/obj/{typename}/{uid}` for record operations.
+
+    Authentication is via a Bearer token (the API key issued from your Bubble app settings).
+    Privacy rules in the Bubble editor must allow Create / Modify / Delete via API for the
+    corresponding operations to be permitted.
+  version: "1.1"
+  contact:
+    name: Bubble
+    url: https://manual.bubble.io/core-resources/api/the-bubble-api/the-data-api
+servers:
+  - url: https://{appname}.bubbleapps.io
+    description: Bubble app on the bubbleapps.io subdomain
+    variables:
+      appname:
+        default: yourapp
+        description: Your Bubble application name
+  - url: https://{customDomain}
+    description: Bubble app on a custom domain
+    variables:
+      customDomain:
+        default: example.com
+        description: Your custom domain
+security:
+  - bearerAuth: []
+tags:
+  - name: Data
+    description: Generic CRUD operations against your Bubble application data types.
+paths:
+  /api/1.1/obj/{typename}:
+    parameters:
+      - name: typename
+        in: path
+        required: true
+        description: The Bubble data type name (e.g. `user`, `product`, `order`).
+        schema:
+          type: string
+    get:
+      tags: [Data]
+      summary: Search records
+      description: |
+        Retrieve a list of records of the given data type. Supports constraints, sort, pagination
+        via query parameters.
+      operationId: searchRecords
+      parameters:
+        - name: constraints
+          in: query
+          description: JSON-encoded array of constraints to filter records.
+          schema:
+            type: string
+        - name: cursor
+          in: query
+          description: Zero-based offset for pagination.
+          schema:
+            type: integer
+        - name: limit
+          in: query
+          description: Number of records to return (max 100).
+          schema:
+            type: integer
+            maximum: 100
+        - name: sort_field
+          in: query
+          schema:
+            type: string
+        - name: descending
+          in: query
+          schema:
+            type: boolean
+      responses:
+        "200":
+          description: List response wrapper
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ListResponse"
+    post:
+      tags: [Data]
+      summary: Create a record
+      operationId: createRecord
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: true
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  status:
+                    type: string
+  /api/1.1/obj/{typename}/bulk:
+    parameters:
+      - name: typename
+        in: path
+        required: true
+        schema:
+          type: string
+    post:
+      tags: [Data]
+      summary: Bulk create records
+      description: Create many records in a single request. The body is newline-delimited JSON, one record per line.
+      operationId: bulkCreateRecords
+      requestBody:
+        required: true
+        content:
+          text/plain:
+            schema:
+              type: string
+              description: Newline-delimited JSON objects, one per record.
+      responses:
+        "200":
+          description: Bulk creation results
+          content:
+            text/plain:
+              schema:
+                type: string
+                description: Newline-delimited results per record.
+  /api/1.1/obj/{typename}/{uid}:
+    parameters:
+      - name: typename
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: uid
+        in: path
+        required: true
+        description: The unique ID of the record.
+        schema:
+          type: string
+    get:
+      tags: [Data]
+      summary: Retrieve a record
+      operationId: getRecord
+      responses:
+        "200":
+          description: The record
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RecordResponse"
+    patch:
+      tags: [Data]
+      summary: Partially update a record
+      operationId: patchRecord
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: true
+      responses:
+        "204":
+          description: Updated
+    put:
+      tags: [Data]
+      summary: Replace a record
+      description: Replaces all editable fields on the record. Fields omitted from the body are cleared.
+      operationId: replaceRecord
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: true
+      responses:
+        "204":
+          description: Replaced
+    delete:
+      tags: [Data]
+      summary: Delete a record
+      operationId: deleteRecord
+      responses:
+        "204":
+          description: Deleted
+  /api/1.1/meta:
+    get:
+      tags: [Data]
+      summary: Get metadata for app data types and endpoints
+      operationId: getMeta
+      responses:
+        "200":
+          description: Metadata describing the app's data types, fields, and endpoints
+          content:
+            application/json:
+              schema:
+                type: object
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: Bearer token issued in the Bubble app's Settings → API tab.
+  schemas:
+    RecordResponse:
+      type: object
+      properties:
+        response:
+          type: object
+          additionalProperties: true
+    ListResponse:
+      type: object
+      properties:
+        response:
+          type: object
+          properties:
+            results:
+              type: array
+              items:
+                type: object
+                additionalProperties: true
+            cursor:
+              type: integer
+            count:
+              type: integer
+            remaining:
+              type: integer
