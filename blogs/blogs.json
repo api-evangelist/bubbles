@@ -5,14 +5,14 @@
       "source": "https://bubble.io/blog/feed/",
       "feed_url": "https://bubble.io/blog/feed/",
       "title": "",
-      "saved": 9,
+      "saved": 10,
       "method": "feed"
     },
     {
       "source": "https://forum.bubble.io/posts.rss",
       "feed_url": "https://forum.bubble.io/posts.rss",
       "title": "",
-      "saved": 18,
+      "saved": 19,
       "method": "feed"
     },
     {
@@ -23,6 +23,6 @@
       "method": "discovered"
     }
   ],
-  "post_count": 81,
-  "fetched": "2026-06-14T20:42:17Z"
+  "post_count": 123,
+  "fetched": "2026-06-27T12:03:07Z"
 }
