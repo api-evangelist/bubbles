@@ -57,6 +57,12 @@ apis:
         url: https://manual.bubble.io/core-resources/api/the-bubble-api/the-workflow-api
 
 common:
+  - type: TrustCenter
+    url: security/bubbles-trust-center.yml
+  - type: DomainSecurity
+    url: security/bubbles-domain-security.yml
+  - type: Authentication
+    url: authentication/bubbles-authentication.yml
   - type: LinkedIn
     url: https://www.linkedin.com/company/bubble-hq
   - type: Website
