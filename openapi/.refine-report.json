@@ -1,0 +1,14 @@
+{
+  "provider": "bubbles",
+  "sources": [
+    "bubbles-data-api-openapi.yml"
+  ],
+  "outputs": [
+    "bubbles-data-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
