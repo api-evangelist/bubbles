@@ -1,0 +1,227 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Bubble Data API",
+    "version": "1.1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Data",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search records",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{appname}.bubbleapps.io/api/1.1/obj/:typename",
+            "params": [
+              {
+                "name": "typename",
+                "value": "",
+                "type": "path",
+                "description": "The Bubble data type name (e.g. `user`, `product`, `order`)."
+              },
+              {
+                "name": "constraints",
+                "value": "",
+                "type": "query",
+                "description": "JSON-encoded array of constraints to filter records."
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "Zero-based offset for pagination."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to return (max 100)."
+              },
+              {
+                "name": "sort_field",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "descending",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieve a list of records of the given data type. Supports constraints, sort, pagination\nvia query parameters.\n"
+        },
+        {
+          "info": {
+            "name": "Create a record",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{appname}.bubbleapps.io/api/1.1/obj/:typename",
+            "params": [
+              {
+                "name": "typename",
+                "value": "",
+                "type": "path",
+                "description": "The Bubble data type name (e.g. `user`, `product`, `order`)."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a record"
+        },
+        {
+          "info": {
+            "name": "Bulk create records",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{appname}.bubbleapps.io/api/1.1/obj/:typename/bulk",
+            "params": [
+              {
+                "name": "typename",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Create many records in a single request. The body is newline-delimited JSON, one record per line."
+        },
+        {
+          "info": {
+            "name": "Retrieve a record",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{appname}.bubbleapps.io/api/1.1/obj/:typename/:uid",
+            "params": [
+              {
+                "name": "typename",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "uid",
+                "value": "",
+                "type": "path",
+                "description": "The unique ID of the record."
+              }
+            ]
+          },
+          "docs": "Retrieve a record"
+        },
+        {
+          "info": {
+            "name": "Replace a record",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{appname}.bubbleapps.io/api/1.1/obj/:typename/:uid",
+            "params": [
+              {
+                "name": "typename",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "uid",
+                "value": "",
+                "type": "path",
+                "description": "The unique ID of the record."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Replaces all editable fields on the record. Fields omitted from the body are cleared."
+        },
+        {
+          "info": {
+            "name": "Partially update a record",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://{appname}.bubbleapps.io/api/1.1/obj/:typename/:uid",
+            "params": [
+              {
+                "name": "typename",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "uid",
+                "value": "",
+                "type": "path",
+                "description": "The unique ID of the record."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Partially update a record"
+        },
+        {
+          "info": {
+            "name": "Delete a record",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{appname}.bubbleapps.io/api/1.1/obj/:typename/:uid",
+            "params": [
+              {
+                "name": "typename",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "uid",
+                "value": "",
+                "type": "path",
+                "description": "The unique ID of the record."
+              }
+            ]
+          },
+          "docs": "Delete a record"
+        },
+        {
+          "info": {
+            "name": "Get metadata for app data types and endpoints",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{appname}.bubbleapps.io/api/1.1/meta"
+          },
+          "docs": "Get metadata for app data types and endpoints"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,1079 @@
+{
+  "item": [
+    {
+      "id": "5c917c4a-9392-46e1-85c5-8e8170a7549e",
+      "name": "Data",
+      "description": {
+        "content": "Generic CRUD operations against your Bubble application data types.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f476ebac-ed31-4fbb-bef6-87347ca44022",
+          "name": "Search records",
+          "request": {
+            "name": "Search records",
+            "description": {
+              "content": "Retrieve a list of records of the given data type. Supports constraints, sort, pagination\nvia query parameters.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "1.1",
+                "obj",
+                ":typename"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "constraints",
+                  "value": "<string>",
+                  "description": "JSON-encoded array of constraints to filter records."
+                },
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<integer>",
+                  "description": "Zero-based offset for pagination."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Number of records to return (max 100)."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort_field",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "descending",
+                  "value": "<boolean>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "typename",
+                  "description": "(Required) The Bubble data type name (e.g. `user`, `product`, `order`)."
+                },
+                {
+                  "description": "Your Bubble application name",
+                  "type": "any",
+                  "value": "{{appname}}",
+                  "key": "appname"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "87ae26c2-1fec-464f-b6ca-95bc0d1a8881",
+              "name": "List response wrapper",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "1.1",
+                    "obj",
+                    ":typename"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "constraints",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "sort_field",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "descending",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "typename",
+                      "description": "(Required) The Bubble data type name (e.g. `user`, `product`, `order`)."
+                    },
+                    {
+                      "description": "Your Bubble application name",
+                      "type": "any",
+                      "value": "{{appname}}",
+                      "key": "appname"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"response\": {\n    \"results\": [\n      {\n        \"key_0\": 4678\n      },\n      {\n        \"key_0\": 7106.426497904462,\n        \"key_1\": 3571.045402805867\n      }\n    ],\n    \"cursor\": 5985,\n    \"count\": 5691,\n    \"remaining\": 5887\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c5dfc931-73dd-437f-9a4c-e94bb701b007",
+          "name": "Create a record",
+          "request": {
+            "name": "Create a record",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "1.1",
+                "obj",
+                ":typename"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "typename",
+                  "description": "(Required) The Bubble data type name (e.g. `user`, `product`, `order`)."
+                },
+                {
+                  "description": "Your Bubble application name",
+                  "type": "any",
+                  "value": "{{appname}}",
+                  "key": "appname"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"key_0\": 2087,\n  \"key_1\": 3543.7893048020474,\n  \"key_2\": 8052.563247409724\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "107d0f2e-3485-4f4d-a2b0-65d0d1ee676c",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "1.1",
+                    "obj",
+                    ":typename"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "typename",
+                      "description": "(Required) The Bubble data type name (e.g. `user`, `product`, `order`)."
+                    },
+                    {
+                      "description": "Your Bubble application name",
+                      "type": "any",
+                      "value": "{{appname}}",
+                      "key": "appname"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"key_0\": 6338,\n  \"key_1\": 5041\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"status\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "587fdbbb-a3be-4400-bf21-393dbbb8ae0d",
+          "name": "Bulk create records",
+          "request": {
+            "name": "Bulk create records",
+            "description": {
+              "content": "Create many records in a single request. The body is newline-delimited JSON, one record per line.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "1.1",
+                "obj",
+                ":typename",
+                "bulk"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "typename",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Your Bubble application name",
+                  "type": "any",
+                  "value": "{{appname}}",
+                  "key": "appname"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "text/plain"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<string>"
+            }
+          },
+          "response": [
+            {
+              "id": "e4405c87-ca7e-4750-8bb1-71d3d960dd4f",
+              "name": "Bulk creation results",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "1.1",
+                    "obj",
+                    ":typename",
+                    "bulk"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "typename",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Your Bubble application name",
+                      "type": "any",
+                      "value": "{{appname}}",
+                      "key": "appname"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<string>"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a53ef252-3ad5-41b3-8d27-dd4378f3d7ee",
+          "name": "Retrieve a record",
+          "request": {
+            "name": "Retrieve a record",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "1.1",
+                "obj",
+                ":typename",
+                ":uid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "typename",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "uid",
+                  "description": "(Required) The unique ID of the record."
+                },
+                {
+                  "description": "Your Bubble application name",
+                  "type": "any",
+                  "value": "{{appname}}",
+                  "key": "appname"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "28ae1d8b-395c-4d4c-b43d-6886908c9284",
+              "name": "The record",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "1.1",
+                    "obj",
+                    ":typename",
+                    ":uid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "typename",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "uid",
+                      "description": "(Required) The unique ID of the record."
+                    },
+                    {
+                      "description": "Your Bubble application name",
+                      "type": "any",
+                      "value": "{{appname}}",
+                      "key": "appname"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"response\": {\n    \"key_0\": 7361,\n    \"key_1\": true,\n    \"key_2\": 849.4520228429969\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7bac2ed6-d4a7-4b3e-9c0c-e26cd05b4bf4",
+          "name": "Partially update a record",
+          "request": {
+            "name": "Partially update a record",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "1.1",
+                "obj",
+                ":typename",
+                ":uid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "typename",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "uid",
+                  "description": "(Required) The unique ID of the record."
+                },
+                {
+                  "description": "Your Bubble application name",
+                  "type": "any",
+                  "value": "{{appname}}",
+                  "key": "appname"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"key_0\": 2087,\n  \"key_1\": 3543.7893048020474,\n  \"key_2\": 8052.563247409724\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "73dbdea8-759d-49f7-b494-76fa1216ea68",
+              "name": "Updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "1.1",
+                    "obj",
+                    ":typename",
+                    ":uid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "typename",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "uid",
+                      "description": "(Required) The unique ID of the record."
+                    },
+                    {
+                      "description": "Your Bubble application name",
+                      "type": "any",
+                      "value": "{{appname}}",
+                      "key": "appname"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"key_0\": 6338,\n  \"key_1\": 5041\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "710a41f9-41a0-498b-85ec-a5da96015a24",
+          "name": "Replace a record",
+          "request": {
+            "name": "Replace a record",
+            "description": {
+              "content": "Replaces all editable fields on the record. Fields omitted from the body are cleared.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "1.1",
+                "obj",
+                ":typename",
+                ":uid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "typename",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "uid",
+                  "description": "(Required) The unique ID of the record."
+                },
+                {
+                  "description": "Your Bubble application name",
+                  "type": "any",
+                  "value": "{{appname}}",
+                  "key": "appname"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"key_0\": 2087,\n  \"key_1\": 3543.7893048020474,\n  \"key_2\": 8052.563247409724\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2f8b57fa-3794-4fc0-9c54-c6a6f816c410",
+              "name": "Replaced",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "1.1",
+                    "obj",
+                    ":typename",
+                    ":uid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "typename",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "uid",
+                      "description": "(Required) The unique ID of the record."
+                    },
+                    {
+                      "description": "Your Bubble application name",
+                      "type": "any",
+                      "value": "{{appname}}",
+                      "key": "appname"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"key_0\": 6338,\n  \"key_1\": 5041\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "539624fd-78a7-4533-96b5-d98a299e433d",
+          "name": "Delete a record",
+          "request": {
+            "name": "Delete a record",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "1.1",
+                "obj",
+                ":typename",
+                ":uid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "typename",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "uid",
+                  "description": "(Required) The unique ID of the record."
+                },
+                {
+                  "description": "Your Bubble application name",
+                  "type": "any",
+                  "value": "{{appname}}",
+                  "key": "appname"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6c731960-cb40-4cac-8971-4e1979433178",
+              "name": "Deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "1.1",
+                    "obj",
+                    ":typename",
+                    ":uid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "typename",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "uid",
+                      "description": "(Required) The unique ID of the record."
+                    },
+                    {
+                      "description": "Your Bubble application name",
+                      "type": "any",
+                      "value": "{{appname}}",
+                      "key": "appname"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2843092c-0886-4169-b6b1-469394ec5881",
+          "name": "Get metadata for app data types and endpoints",
+          "request": {
+            "name": "Get metadata for app data types and endpoints",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "1.1",
+                "meta"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Your Bubble application name",
+                  "type": "any",
+                  "value": "{{appname}}",
+                  "key": "appname"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "37f6e7a0-7976-4e67-9105-b456fee785a8",
+              "name": "Metadata describing the app's data types, fields, and endpoints",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "1.1",
+                    "meta"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your Bubble application name",
+                      "type": "any",
+                      "value": "{{appname}}",
+                      "key": "appname"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Your Bubble application name",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "yourapp",
+      "key": "appname"
+    },
+    {
+      "type": "string",
+      "value": "https://{{appname}}.bubbleapps.io",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "b1f6ee1c-6852-44a9-acbf-c8ea55c41db6",
+    "name": "Bubble Data API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Bubble Data API exposes the database of a Bubble application as REST resources.\nEach application data type is addressable under `/api/1.1/obj/{typename}` for collection\noperations and `/api/1.1/obj/{typename}/{uid}` for record operations.\n\nAuthentication is via a Bearer token (the API key issued from your Bubble app settings).\nPrivacy rules in the Bubble editor must allow Create / Modify / Delete via API for the\ncorresponding operations to be permitted.\n\n\nContact Support:\n Name: Bubble",
+      "type": "text/plain"
+    }
+  }
+}
